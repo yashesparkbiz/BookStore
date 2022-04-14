@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+var builder = WebApplication.CreateBuilder(args);
 
 namespace BookStore1
 {
@@ -15,13 +16,22 @@ namespace BookStore1
         {
             CreateHostBuilder(args).Build().Run();
         }
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
-            {
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
                 webBuilder.UseStartup<Startup>();
             });
     }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 //var builder = WebApplication.CreateBuilder(args);
@@ -55,11 +65,17 @@ namespace BookStore1
 
 //app.UseHttpsRedirection();
 //app.UseStaticFiles();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 //app.UseRouting();
+app.UseRouting();
 
 //app.UseAuthorization();
+app.UseAuthorization();
 
 //app.MapRazorPages();
+app.MapRazorPages();
 
 //app.Run();
+app.Run();
