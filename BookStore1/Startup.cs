@@ -17,11 +17,12 @@ namespace BookStore1
             }
 
             app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.Map("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World ");
+                    await context.Response.WriteAsync("Environment : "+env.EnvironmentName);
                 });
             });
 
