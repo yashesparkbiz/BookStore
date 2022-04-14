@@ -6,7 +6,7 @@ namespace BookStore1
     {
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -20,10 +20,11 @@ namespace BookStore1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.Map("/", async context =>
-                {
-                    await context.Response.WriteAsync("Environment : "+env.EnvironmentName);
-                });
+                endpoints.MapDefaultControllerRoute();
+                //endpoints.Map("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Environment : "+env.EnvironmentName);
+                //});
             });
 
             app.UseEndpoints(endpoints =>
