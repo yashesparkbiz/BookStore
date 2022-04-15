@@ -4,9 +4,14 @@ namespace BookStore1.Properties.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "Yash";
+            return View();
+        }
+
+        public ViewResult Aboutus()
+        {
+            return View("About");
         }
     }
 }
