@@ -2,19 +2,23 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<html>
-    <head>
-        <title>Index</title>
-        <style>
-            body{
-                background-color:aqua;
-            }
-        </style>
-    </head>
-    <body>
+
+        <img src="~/images/logo.png" class="logo" alt="logo" />
         <p><h1>Welcome to BookStore Application</h1></p>
-    </body>
-</html>
+        <p><h1>nuget pakage check</h1></p>
+        <h2>@DateTime.Now</h2>
+        <h2>Sum = @(5+5)</h2>
+        <hr />
+        @*Multiline*@
+    @{
+        int a = 50;
+        int b = 50;
+        int c = a*b;
+    }
+    <h2>mul = @c</h2>
+    <h2>twitter = @@yash_patel</h2>
+    <h2>My email - yash@gmail.com</h2>
+   

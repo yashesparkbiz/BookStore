@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
+
 
 namespace BookStore1
 {
@@ -7,6 +10,9 @@ namespace BookStore1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+#if DEBUG
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+#endif
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -15,6 +21,8 @@ namespace BookStore1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -51,8 +59,6 @@ namespace BookStore1
             {
                 await context.Response.WriteAsync("Hello from 2nd delegate.  \n");
             });
-
-            
         }
     }
 }

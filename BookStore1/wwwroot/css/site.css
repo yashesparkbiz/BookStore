@@ -14,5 +14,11 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+.logo {
+    max-height: 50px;
+   max-width: 50px;
+}
+
