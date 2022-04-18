@@ -2,18 +2,22 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 <html>
     <head>
         <title>Aboutus</title>
-        <style>
-            body{
-                background-color:aqua;
-            }
-        </style>
     </head>
     <body>
+         @section breadcrumb{
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About us</li>
+            </ol>
+        </nav>
+        }
         <p><h1>Aboutus</h1></p>
     </body>
 </html>

@@ -15,12 +15,13 @@ namespace BookStore1.Properties.Controllers
         public ViewResult GetAllBooks()
         {
             var books = _bookRepository.GetAllBooks();
-            return View();
+            return View(books);
         }
 
-        public BookModel GetBook(int id)
+        public ViewResult GetBook(int id)
         {
-            return _bookRepository.GetBookById(id);
+            var data = _bookRepository.GetBookById(id);
+            return View(data);
         }
 
         public List<BookModel> SearchBooks(string bookname, string authername)

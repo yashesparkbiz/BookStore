@@ -4,21 +4,34 @@
 @{
     Layout = "_Layout";
 }
-
-
-        <img src="~/images/logo.png" class="logo" alt="logo" />
-        <p><h1>Welcome to BookStore Application</h1></p>
-        <p><h1>nuget pakage check</h1></p>
-        <h2>@DateTime.Now</h2>
-        <h2>Sum = @(5+5)</h2>
-        <hr />
-        @*Multiline*@
-    @{
-        int a = 50;
-        int b = 50;
-        int c = a*b;
+@*<img src="~/images/logo.png" class="logo" alt="logo" />
+    <p><h1>Welcome to BookStore Application</h1></p>
+    <p><h1>nuget pakage check</h1></p>
+    <h2>@DateTime.Now</h2>
+    <h2>Sum = @(5+5)</h2>
+    <hr />*@
+@*Multiline*@
+@*@{
+    int a = 50;
+    int b = 50;
+    int c = a*b;
     }
     <h2>mul = @c</h2>
     <h2>twitter = @@yash_patel</h2>
-    <h2>My email - yash@gmail.com</h2>
-   
+    <h2>My email - yash@gmail.com</h2>*@
+
+
+@section breadcrumb{
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Index</li>
+        </ol>
+    </nav>
+}
+
+    <div style="text-align:center;">
+        <h1>Welcome to home page</h1>
+    </div>
+
