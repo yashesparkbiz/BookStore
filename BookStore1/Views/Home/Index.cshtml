@@ -1,9 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-    Layout = "_Layout";
-}
+
 @*<img src="~/images/logo.png" class="logo" alt="logo" />
     <p><h1>Welcome to BookStore Application</h1></p>
     <p><h1>nuget pakage check</h1></p>
@@ -20,6 +18,16 @@
     <h2>twitter = @@yash_patel</h2>
     <h2>My email - yash@gmail.com</h2>*@
 
+@{
+    ViewData["Title"] = "Home";
+}
+
+<environment exclude="Development">
+    <h3>Development</h3>
+</environment>
+<environment include="Production, staging">
+    <h3>Production</h3>
+</environment>
 
 @section breadcrumb{
     <nav aria-label="breadcrumb">
@@ -32,6 +40,6 @@
 }
 
     <div style="text-align:center;">
-        <h1>Welcome to home page</h1>
+        <h1>Welcome to home page @ViewData["CustomProperty"]</h1>
     </div>
 

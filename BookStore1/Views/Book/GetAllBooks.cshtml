@@ -1,14 +1,24 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<BookStore1.Models.BookModel>
-@{
-    Layout = "_Layout";
-}
 
+@model IEnumerable<BookModel>
+@{
+    dynamic data = ViewBag.Data;
+    var bookInfo = ViewData["book"] as BookModel;
+    ViewData["Title"] = "Book";
+}
+@{
+    var parameters = new Dictionary<string, string>()
+    {
+        {"name", "yash"},
+        {"company", "amogha"},
+        {"appname", "bookst"}
+    };
+}
 <html>
 <head>
-    <title>GetAllBook</title>
+    <title>GetAllBook </title>
     <link href="~/css/Book.css" rel="stylesheet" />
 </head>
 <body>
@@ -23,7 +33,11 @@
         </nav>
         }
         <div class="row r1">
-            <h2>Book List</h2>
+            <h2>Book List @ViewBag.Title</h2>
+            @data.Id @data.Name <br />
+            Id = @ViewBag.Type.Id <br />
+            Name = @ViewBag.Type.Author<br />
+            @ViewData["property1"]
         </div>
         <div class="row r2">
             @foreach (var book in Model)
@@ -32,7 +46,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@book.Id.  @book.Title</h5>
                         <p class="card-text">- @book.Author</p>
-                        <a href="/book/getbook?id=@book.Id" class="btn btn-primary">View Details</a>
+                        <a asp-route="bookdetailsRoute" asp-route-id="@book.Id" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
             }

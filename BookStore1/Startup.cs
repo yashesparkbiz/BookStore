@@ -1,14 +1,32 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.EntityFrameworkCore;
+global using BookStore1.Models;
+global using BookStore1.Data;
+
+
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-
+using System.Configuration;
+using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace BookStore1
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<BookStoreContext>(options => options.UseMySql(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<BookStoreContext>(options =>
+                   options.UseMySql(Configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version())));
+
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
