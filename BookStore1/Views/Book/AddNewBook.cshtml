@@ -1,22 +1,59 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using BookStore1.Enum;
 @{
-    ViewData["Title"] = "Add New Book"; 
+    ViewData["Title"] = "Add New Book";
 }
+@inject BookStore1.Repository.ILanguageRepository _languageRepo
 @model BookModel
 
-<form method="post" asp-action="AddnewBook" asp-controller="Book">
+<form asp-action="addnewbook" asp-controller="book" method="post" data-ajax="true" data-ajax-complete="myComplete" data-ajax-success="mySuccess" data-ajax-loading="#myLoader" enctype="multipart/form-data">
     <div class="container">
-        <div class="row" style="text-align=center; margin-top: 10px;">
+        <div class="row" style="text-align: center; ">
             <h3>Add New Book</h3>
+        </div>
+        <div asp-validation-summary="All" class=text-danger></div>
+        @if (ViewBag.isSuccess == true)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Congratulations!</strong> you successfully added a new book.
+                Click <a asp-controller="book" asp-action="getbook" asp-route-id="@ViewBag.BookId">here</a> to see details.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="spinner-border" role="status" id="myLoader" style="display:none;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <div class="row form-group" style="margin-top: 10px;">
+            <div class="col-md-1">
+                <label asp-for="LanguageId">Language : </label>
+            </div>
+            <div class="col-md-3">
+                <select asp-for="LanguageId" class="form-control" asp-items="(await @_languageRepo.GetLanguages()).Select(x => new SelectListItem() { Value=x.Id.ToString(), Text=x.Name })" >
+                    <option value="">Please choose your language</option>
+                </select>
+                <span class="text-danger" asp-validation-for="LanguageId"></span>
+            </div>
+        </div>
+        <div class="row form-group" style="margin-top: 10px;">
+            <div class="col-md-1">
+                <label asp-for="MyField">MyField : </label>
+            </div>
+            <div class="col-md-3">
+                <input asp-for="MyField" class="form-control" />
+                <span class="text-danger" asp-validation-for="MyField"></span>
+            </div>
         </div>
         <div class="row form-group" style="margin-top: 10px;">
             <div class="col-md-1">
                 <label asp-for="Title">Title : </label>
             </div>
             <div class="col-md-3">
-                <input asp-for="Title" class="form-control"/>
+                <input asp-for="Title" class="form-control" />
+                <span class="text-danger" asp-validation-for="Title"></span>
             </div>
         </div>
         <div class="row form-group" style="margin-top: 10px;">
@@ -24,14 +61,62 @@
                 <label asp-for="Author">Author : </label>
             </div>
             <div class="col-md-3">
-                <input asp-for="Author" class="form-control"/>
+                <input asp-for="Author" class="form-control" />
+                <span class="text-danger" asp-validation-for="Author"></span>
             </div>
         </div>
+
+        <div class="row form-group" style="margin-top: 10px;">
+            <div class="col-md-2">
+                <label asp-for="CoverPhoto" class="control-label">CustomPhoto : </label>
+            </div>
+            <div class="col-md-3 custom-file">
+                    <input asp-for="CoverPhoto" class="custom-file-input" id="customFile">
+                    <label class="custom-file-lable" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+        </div>
+
+         <div class="row form-group" style="margin-top: 10px;">
+            <div class="col-md-2">
+                <label asp-for="GalleryFiles" class="control-label">GallaryFiles : </label>
+            </div>
+            <div class="col-md-3 custom-file">
+                    <input asp-for="GalleryFiles" class="custom-file-input" id="customFile">
+                    <label class="custom-file-lable" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="GalleryFiles" class="text-danger"></span>
+        </div>
+
+        <div class="row form-group" style="margin-top: 10px;">
+            <div class="col-md-2">
+                <label asp-for="BookPdf" class="control-label">BookPdf : </label>
+            </div>
+            <div class="col-md-3 custom-file">
+                    <input asp-for="BookPdf" class="custom-file-input" id="customFile">
+                    <label class="custom-file-lable" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="BookPdf" class="text-danger"></span>
+        </div>
+
         <div class="row form-group" style="margin-top: 10px;">
             <div class="col-md-4" style="text-align: left;">
-                <input type="button" value="Add Book" class="btn btn-primary" />
+                <input type="submit" value="Add Book" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
+@section scripts {
+<script>
+    function myComplete(){
+        alert("I'm from complete.");
+    }
+    function mySuccess{
+        alert("I got success");
+    }
+    function myFailure{
+        alert("I'm from failure");
+    }
+</script>
+}
 

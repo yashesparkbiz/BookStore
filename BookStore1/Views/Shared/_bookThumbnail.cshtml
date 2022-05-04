@@ -1,0 +1,10 @@
+﻿@model BookModel
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem; margin-left:2%;">
+    <img src="/@(string.IsNullOrEmpty(Model.CoverImageurl) ? "images/logo.png" : Model.CoverImageurl)" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Id.  @Model.Title</h5>
+        <p class="card-text">- @Model.Author</p>
+        @*<a asp-route="Book/get-book" asp-route-id="@Model.Id" class="btn btn-primary">View Details</a>*@
+        <a asp-controller="Book" asp-action="getbook"  asp-route-id="@Model.Id" class="btn btn-primary">View Details</a>
+    </div>
+</div>

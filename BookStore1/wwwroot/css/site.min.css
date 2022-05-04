@@ -1,0 +1,41 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.logo {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+
+body {
+}
+
+.c1{
+    margin: 2%, 4%, 2%, 4%;
+}
+
+.r1 {
+    margin-top: 2%;
+    background-color: #f0f2f5;
+    text-align: center;
+}
+
+.r2 {
+    margin-top: 4%;
+}

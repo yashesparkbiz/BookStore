@@ -11,6 +11,10 @@ using Microsoft.Extensions.FileProviders;
 using System.Configuration;
 using Microsoft.Extensions.Hosting;
 using Pomelo.EntityFrameworkCore.MySql;
+using BookStore1.Repository;
+using Microsoft.AspNetCore.Identity;
+using BookStore1.Helpers;
+using BookStore1.Service;
 
 namespace BookStore1
 {
@@ -27,10 +31,38 @@ namespace BookStore1
             services.AddDbContext<BookStoreContext>(options =>
                    options.UseMySql(Configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version())));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookStoreContext>().AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 5;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.SignIn.RequireConfirmedEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(config => 
+            {
+                config.LoginPath = Configuration["Application:LoginPath"];
+            });
+
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>(); 
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.Configure<SMTPConfigModel>(Configuration.GetSection("SMTPConfig"));
+            services.Configure<NewBookAlertConfig>("InternalBook",Configuration.GetSection("customobj"));
+            services.Configure<NewBookAlertConfig>("ThirdPartyBook",Configuration.GetSection("ThirdPartyBook"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,13 +76,29 @@ namespace BookStore1
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
                 //endpoints.Map("/", async context =>
                 //{
-                //    await context.Response.WriteAsync("Environment : "+env.EnvironmentName);
+                //    await context.Response.WriteAsync("Environment : " + env.EnvironmentName);
                 //});
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{action}/{controller}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "MyArea",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "Aboutus",
+                //    pattern: "get-all-books",
+                //    defaults: new { controller = "Book", action = "GetAllBooks" });
             });
 
             app.UseEndpoints(endpoints =>

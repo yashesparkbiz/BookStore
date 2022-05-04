@@ -42,13 +42,7 @@
         <div class="row r2">
             @foreach (var book in Model)
             {
-                <div class="card text-dark bg-light mb-3" style="max-width: 18rem; margin-left:2%;">
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Id.  @book.Title</h5>
-                        <p class="card-text">- @book.Author</p>
-                        <a asp-route="bookdetailsRoute" asp-route-id="@book.Id" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
+                <partial name="_bookThumbnail" model="@book"></partial>
             }
         </div>
     </div>

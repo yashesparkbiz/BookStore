@@ -21,6 +21,7 @@
 @{
     ViewData["Title"] = "Home";
 }
+@inject BookStore1.Repository.IBookRepository _bookRepository
 
 <environment exclude="Development">
     <h3>Development</h3>
@@ -30,16 +31,37 @@
 </environment>
 
 @section breadcrumb{
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Index</li>
-        </ol>
-    </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Index</li>
+    </ol>
+</nav>
 }
 
-    <div style="text-align:center;">
-        <h1>Welcome to home page @ViewData["CustomProperty"]</h1>
-    </div>
+<div style="text-align:center;">
+    <h1>Welcome to home page @ViewData["CustomProperty"]</h1>
+    <big>Welcome to home page</big>
+    <p big>Top book using attribute</p>
 
+    @*@{
+        try
+        {
+            @(await Component.InvokeAsync("TopBook"))
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }*@
+
+    <div style="z-index:-1;"></div>
+    <vc:top-book></vc:top-book>
+    @foreach (var item in await _bookRepository.GetAllBooks())
+    {
+        <h2>@item.Id</h2>
+        <h2>@item.Title</h2>
+        <h2>@item.Author</h2>
+    }
+</div>

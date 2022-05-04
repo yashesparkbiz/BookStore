@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@*@inject BookStore1.Repository.IBookRepository _bookRepo*@
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configuration
+@inject Microsoft.Extensions.Options.IOptionsSnapshot<NewBookAlertConfig> _newBookAlertconfiguration
+@{
+    var newBookAlertconfiguration = _newBookAlertconfiguration.Get("InternalBook");
+    var ThirdPartyBookAlertconfiguration = _newBookAlertconfiguration.Get("ThirdPartyBook");
+}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background:#cacccf; position:fixed; width:100%; top:0; z-index:4;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">@_configuration["AppName"]</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="contactus">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Aboutus">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Book" asp-action="GetAllBooks">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Book" asp-action="AddNewBook">Add Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Book" asp-action="GetAllBooks">Books</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Signup">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>*@
+                    <partial name="_LoginInfo"></partial>
+                </ul>
+                @*<form class="d-flex">
+                    <a class="nav-link" asp-controller="Account" asp-action="Signup">Signup</a>
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                </form>*@
+            </div>
+        </div>
+    </nav>
+    @if (newBookAlertconfiguration.DisplayNewBookAlert)
+    {
+        <div class="alert alert-info" role="alert" style="margin-top:3%; text-align:top;">
+            @newBookAlertconfiguration.AppName
+        </div>
+    }
+
+    @*@if (ThirdPartyBookAlertconfiguration.DisplayNewBookAlert)
+        {
+        <div class="alert alert-info" role="alert" style="margin-top:3%; height:10px; text-align:top;">
+        @ThirdPartyBookAlertconfiguration.AppName
+        </div>
+        }*@
+</header>
