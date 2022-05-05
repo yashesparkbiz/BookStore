@@ -53,9 +53,7 @@ namespace BookStore1.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                     b.Property<string>("BookPdfurl")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -64,12 +62,7 @@ namespace BookStore1.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+
                     b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
@@ -103,9 +96,6 @@ namespace BookStore1.Migrations
                     b.ToTable("Language");
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             modelBuilder.Entity("BookStore1.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -320,12 +310,7 @@ namespace BookStore1.Migrations
                     b.Navigation("Book");
                 });
 
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+
             modelBuilder.Entity("BookStore1.Data.Books", b =>
                 {
                     b.HasOne("BookStore1.Data.Language", null)
@@ -335,9 +320,7 @@ namespace BookStore1.Migrations
                         .IsRequired();
                 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -394,12 +377,7 @@ namespace BookStore1.Migrations
                     b.Navigation("bookGallery");
                 });
 
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+
             modelBuilder.Entity("BookStore1.Data.Language", b =>
                 {
                     b.Navigation("Books");

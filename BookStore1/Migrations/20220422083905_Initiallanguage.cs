@@ -19,19 +19,9 @@ namespace BookStore1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
               name  : "Language",
-=======
-                name: "Language",
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
-                name: "Language",
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
-=======
-                name: "Language",
->>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+
                 table: "Book");
         }
     }
