@@ -10,9 +10,15 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <form asp-action="addnewbook" asp-controller="book" method="post" data-ajax="true" data-ajax-complete="myComplete" data-ajax-success="mySuccess" data-ajax-loading="#myLoader" enctype="multipart/form-data">
     <div class="container">
         <div class="row" style="text-align: center; ">
+=======
+<form method="post" asp-action="addnewbook" asp-controller="book">
+    <div class="container">
+        <div class="row" style="text-align: center; margin-top: 10px;">
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 <form method="post" asp-action="addnewbook" asp-controller="book">
     <div class="container">
@@ -36,11 +42,14 @@
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         <div class="spinner-border" role="status" id="myLoader" style="display:none;">
             <span class="visually-hidden">Loading...</span>
         </div>
 
+=======
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
@@ -52,7 +61,11 @@
             <div class="col-md-3">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <select asp-for="LanguageId" class="form-control" asp-items="(await @_languageRepo.GetLanguages()).Select(x => new SelectListItem() { Value=x.Id.ToString(), Text=x.Name })" >
+=======
+                <select asp-for="LanguageId" class="form-control" asp-items="Html.GetEnumSelectList<LanguageEnum>()" multiple>
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
                 <select asp-for="LanguageId" class="form-control" asp-items="Html.GetEnumSelectList<LanguageEnum>()" multiple>
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f

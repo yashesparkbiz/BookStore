@@ -7,12 +7,18 @@ namespace BookStore1.Repository
         private readonly BookStoreContext _context = null;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         private readonly IConfiguration _configuration;
 
         public BookRepository(BookStoreContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
+=======
+        public BookRepository(BookStoreContext context)
+        {
+            _context = context; 
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
         public BookRepository(BookStoreContext context)
         {
@@ -32,6 +38,7 @@ namespace BookStore1.Repository
                 Title = model.Title,
                 Author = model.Author,
                 LanguageId = model.LanguageId,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 CoverImageurl = model.CoverImageurl,
@@ -62,6 +69,11 @@ namespace BookStore1.Repository
             await _context.Book.AddAsync(newBook);
             await _context.SaveChangesAsync(); 
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+            };
+            await _context.Book.AddAsync(newBook);
+            await _context.SaveChangesAsync(); 
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
             return newBook.Id;
         }
         public async Task<List<BookModel>> GetAllBooks()
@@ -80,8 +92,11 @@ namespace BookStore1.Repository
                         LanguageId = book.LanguageId,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         CoverImageurl = book.CoverImageurl,
                         BookPdfurl = book.BookPdfurl
+=======
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
@@ -92,6 +107,7 @@ namespace BookStore1.Repository
             return books;
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         public async Task<List<BookModel>> GetTopBooksAsync()
@@ -119,6 +135,10 @@ namespace BookStore1.Repository
         public async Task<BookModel> GetBookById(int id)
         {
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+        public async Task<BookModel> GetBookById(int id)
+        {
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
             var books = await _context.Book.FindAsync(id);
             if(books != null)
             {
@@ -127,6 +147,9 @@ namespace BookStore1.Repository
             }
             return null;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f

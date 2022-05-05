@@ -1,7 +1,10 @@
 ﻿using BookStore1.Enum;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 using BookStore1.Helpers;
+=======
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
@@ -14,12 +17,20 @@ namespace BookStore1.Models
         [DataType(DataType.Date)]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         [Display(Name = "Choose date")]
         public string MyField { get; set; }
         public int Id { get; set; }
         //[StringLength(100, MinimumLength = 6)]
         [Required(ErrorMessage = "Please enter title of your book")]
         //[MyCustomValidation("Azure")]
+=======
+        [Display(Name ="Choose date")]
+        public string MyField { get; set; }
+        public int Id { get; set; }
+        [StringLength(100, MinimumLength = 6)]
+        [Required(ErrorMessage = "Please enter title of your book")]
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
         [Display(Name ="Choose date")]
         public string MyField { get; set; }
@@ -46,6 +57,7 @@ namespace BookStore1.Models
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //[Required(ErrorMessage = "Please choose language of your book")]
         //public LanguageEnum LanguageEnum { get; set; }
 
@@ -64,6 +76,11 @@ namespace BookStore1.Models
         [Required]
         public IFormFile BookPdf { get; set; }
         public string BookPdfurl { get; set; } = string.Empty;
+=======
+
+        [Required(ErrorMessage = "Please choose language of your book")]
+        public LanguageEnum LanguageEnum { get; set; }
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 
         [Required(ErrorMessage = "Please choose language of your book")]

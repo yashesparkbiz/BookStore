@@ -13,6 +13,7 @@ namespace BookStore1.Properties.Controllers
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         public class Route
         {
             public const string Name = "Book";
@@ -50,6 +51,16 @@ namespace BookStore1.Properties.Controllers
             _languageRepository = languageRepository;
         }
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+        private readonly BookRepository _bookRepository = null;
+        private readonly LanguageRepository _languageRepository = null;
+
+        public BookController(BookRepository bookRepository, LanguageRepository languageRepository)
+        {
+            _bookRepository = bookRepository;
+            _languageRepository = languageRepository;
+        }
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
         public async Task<ViewResult> GetAllBooks()
         {
             ViewBag.Title = "Yash";
@@ -66,6 +77,9 @@ namespace BookStore1.Properties.Controllers
 =======
             ViewData["book"] = new BookModel() { Id=6, Author = "asdasd asdfasd" };
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
@@ -78,6 +92,9 @@ namespace BookStore1.Properties.Controllers
 =======
         [Route("book-details/{id}", Name = "bookdetailsRoute")]
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
@@ -93,6 +110,7 @@ namespace BookStore1.Properties.Controllers
             return _bookRepository.SearchBook(bookname, authername);
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         
@@ -145,6 +163,13 @@ namespace BookStore1.Properties.Controllers
             if(ModelState.IsValid)
             {
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+        [HttpPost]
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
+        {
+            if(ModelState.IsValid)
+            {
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {
@@ -153,8 +178,12 @@ namespace BookStore1.Properties.Controllers
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             //ViewBag.Language = new SelectList(await _languageRepository.GetLanguages(), "Id", "Name");
 
+=======
+            ViewBag.Language = new SelectList(await _languageRepository.GetLanguages(), "Id", "Name");
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
             ViewBag.Language = new SelectList(await _languageRepository.GetLanguages(), "Id", "Name");
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
@@ -177,6 +206,7 @@ namespace BookStore1.Properties.Controllers
             return View();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         private async Task<string> UploadImage(string folderPath, IFormFile file)
@@ -202,6 +232,10 @@ namespace BookStore1.Properties.Controllers
         public async Task<ViewResult> AddNewBook(bool isSuccess = false, int bookId = 0)
         {
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+        public async Task<ViewResult> AddNewBook(bool isSuccess = false, int bookId = 0)
+        {
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
             ViewBag.Language = new SelectList(await _languageRepository.GetLanguages(), "Id", "Name");
             //ViewBag.Language = new List<SelectListItem>()
             //{
@@ -217,6 +251,9 @@ namespace BookStore1.Properties.Controllers
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId; 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 =======
 >>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
