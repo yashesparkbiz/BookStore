@@ -12,9 +12,15 @@ using System.Configuration;
 using Microsoft.Extensions.Hosting;
 using Pomelo.EntityFrameworkCore.MySql;
 using BookStore1.Repository;
+<<<<<<< HEAD
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Identity;
 using BookStore1.Helpers;
 using BookStore1.Service;
+=======
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
 
 namespace BookStore1
 {
@@ -53,6 +59,8 @@ namespace BookStore1
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddTransient<IMessageRepository, MessageRepository>(); 
@@ -63,6 +71,12 @@ namespace BookStore1
             services.Configure<SMTPConfigModel>(Configuration.GetSection("SMTPConfig"));
             services.Configure<NewBookAlertConfig>("InternalBook",Configuration.GetSection("customobj"));
             services.Configure<NewBookAlertConfig>("ThirdPartyBook",Configuration.GetSection("ThirdPartyBook"));
+=======
+            services.AddScoped<BookRepository, BookRepository>();
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
+=======
+            services.AddScoped<BookRepository, BookRepository>();
+>>>>>>> f5255d0f872cdb79c9fd4f5200d26bed1ebeca9f
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
