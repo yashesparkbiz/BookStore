@@ -1,14 +1,13 @@
-﻿using BookStore1.Repository;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using BookStore1.Models;
+
+using BookStore1.Data.Repository.Interface;
 
 namespace BookStore1.Controllers
 {
     [Route(Route.Name)]
     public class AccountController : Controller
     {
-
         private readonly IAccountRepository _accountRepository;
 
         public class Route
@@ -95,11 +94,11 @@ namespace BookStore1.Controllers
         }
 
         [HttpPost("ChangePassword")]
-        public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model, CancellationToken cancellationToken)
         {
             if (ModelState.IsValid)
             {
-                var result = await _accountRepository.ChangePassowordAsync(model);
+                var result = await _accountRepository.ChangePassowordAsync(model, cancellationToken);
                 if (result.Succeeded)
                 {
                     ViewBag.IsSuccess = true;
@@ -170,7 +169,6 @@ namespace BookStore1.Controllers
                 {
                     await _accountRepository.GenerateForgotPasswordTokenAsync(user);
                 }
-
                 ModelState.Clear();
                 model.EmailSent = true;
             }

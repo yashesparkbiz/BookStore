@@ -1,4 +1,5 @@
-﻿using BookStore1.Repository;
+﻿
+using BookStore1.Data.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore1.Components

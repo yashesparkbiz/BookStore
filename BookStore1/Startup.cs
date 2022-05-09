@@ -1,21 +1,15 @@
 ﻿global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel.DataAnnotations.Schema;
+
 global using Microsoft.EntityFrameworkCore;
-global using BookStore1.Models;
+global using BookStore1.Data.Models;
 global using BookStore1.Data;
 
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using System.Configuration;
-using Microsoft.Extensions.Hosting;
-using Pomelo.EntityFrameworkCore.MySql;
-using BookStore1.Repository;
-
+using BookStore1.Data.Repository;
+using BookStore1.Data.Repository.Interface;
 using Microsoft.AspNetCore.Identity;
 using BookStore1.Helpers;
-using BookStore1.Service;
+using BookStore1.Data.Service;
+
 
 
 namespace BookStore1
@@ -68,7 +62,6 @@ namespace BookStore1
             services.Configure<NewBookAlertConfig>("ThirdPartyBook",Configuration.GetSection("ThirdPartyBook"));
 
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

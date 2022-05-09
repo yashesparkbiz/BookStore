@@ -32,4 +32,8 @@
     <Folder Include="wwwroot\books\pdf\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookStore1.Data\BookStore1.Data.csproj" />
+  </ItemGroup>
+
 </Project>

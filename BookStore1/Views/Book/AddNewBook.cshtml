@@ -5,9 +5,8 @@
 @{
     ViewData["Title"] = "Add New Book";
 }
-@inject BookStore1.Repository.ILanguageRepository _languageRepo
-@model BookModel
-
+@inject BookStore1.Data.Repository.Interface.ILanguageRepository _languageRepo
+@model BookStore1.Data.Models.BookModel
 
 <form asp-action="addnewbook" asp-controller="book" method="post" data-ajax="true" data-ajax-complete="myComplete" data-ajax-success="mySuccess" data-ajax-loading="#myLoader" enctype="multipart/form-data">
     <div class="container">
@@ -38,7 +37,6 @@
             <div class="col-md-3">
 
                 <select asp-for="LanguageId" class="form-control" asp-items="(await @_languageRepo.GetLanguages()).Select(x => new SelectListItem() { Value=x.Id.ToString(), Text=x.Name })" >
-
                     <option value="">Please choose your language</option>
                 </select>
                 <span class="text-danger" asp-validation-for="LanguageId"></span>

@@ -1,6 +1,6 @@
-﻿using BookStore1.Models;
-using BookStore1.Repository;
-using BookStore1.Service;
+﻿using BookStore1.Data.Models;
+using BookStore1.Data.Repository.Interface;
+using BookStore1.Data.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

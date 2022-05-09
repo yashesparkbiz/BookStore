@@ -1,5 +1,5 @@
-﻿using BookStore1.Models;
-using BookStore1.Repository;
+﻿
+using BookStore1.Data.Repository.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -29,8 +29,6 @@ namespace BookStore1.Properties.Controllers
         }
 
         [HttpGet("get-all-books")]
-
-
         public async Task<ViewResult> GetAllBooks()
         {
             ViewBag.Title = "Yash";

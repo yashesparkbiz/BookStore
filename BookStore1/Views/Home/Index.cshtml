@@ -21,7 +21,7 @@
 @{
     ViewData["Title"] = "Home";
 }
-@inject BookStore1.Repository.IBookRepository _bookRepository
+@inject BookStore1.Data.Repository.Interface.IBookRepository _bookRepository
 
 <environment exclude="Development">
     <h3>Development</h3>
@@ -40,28 +40,30 @@
 </nav>
 }
 
-<div style="text-align:center;">
-    <h1>Welcome to home page @ViewData["CustomProperty"]</h1>
-    <big>Welcome to home page</big>
-    <p big>Top book using attribute</p>
+<div class="container">
+    <div style="text-align:center;">
+        <h1>Welcome to home page @ViewData["CustomProperty"]</h1>
+        <big>Welcome to home page</big>
+        <p big>Top book using attribute</p>
 
-    @*@{
-        try
-        {
+        @*@{
+            try
+            {
             @(await Component.InvokeAsync("TopBook"))
-        }
-        catch(Exception e)
-        {
-            
-        }
-    }*@
+            }
+            catch(Exception e)
+            {
 
-    <div style="z-index:-1;"></div>
-    <vc:top-book></vc:top-book>
-    @foreach (var item in await _bookRepository.GetAllBooks())
-    {
-        <h2>@item.Id</h2>
-        <h2>@item.Title</h2>
-        <h2>@item.Author</h2>
-    }
+            }
+            }*@
+
+        <div style="z-index:-1;"></div>
+        <vc:top-book></vc:top-book>
+        @foreach (var item in await _bookRepository.GetAllBooks())
+        {
+            <h2>@item.Id</h2>
+            <h2>@item.Title</h2>
+            <h2>@item.Author</h2>
+        }
+    </div>
 </div>
